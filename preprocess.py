@@ -22,9 +22,7 @@ def get_labels(path=DATA_PATH):
 def wav2mfcc(file_path, max_len=249):
     wave, sr = librosa.load(file_path, mono=True, sr=None) #monaural / stereophonic sound (un seul channel/+ieurs channels)
     #sr=44.1khz
-    mfcc = librosa.feature.mfcc(wave, sr, n_mfcc=40, n_fft=1764,hop_length=882)  #sampling rate / default hop value 512
-#taaille de la fenetre=40ms
-#default=2048 " a recording with a duration of 60 seconds will contain 2,646,000 samples."
+    mfcc = librosa.feature.mfcc(wave, sr, n_mfcc=40, n_fft=1764,hop_length=882) 
     print(file_path)
 
     #Encode redundancy in MFCCs: By overlapping frames (at > 50 %) we have increased redundancy in the MFCCs. However, this redundancy can be exploited in improved delta-MFCCs and delta-delta-MFCCs computation as we will have a more smooth difference function approximation
